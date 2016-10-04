@@ -1,2 +1,2 @@
 this is branch test
-master
+solve conflicts in the branch master & dev by merge
