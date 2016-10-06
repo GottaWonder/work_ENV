@@ -22,24 +22,24 @@
 #	127.0.0.1	test.dayairssp.dayainfo.com
 #	127.0.0.1	test.dayairweb.dayainfo.com
 #	127.0.0.1	test.dayairadmin.dayainfo.com
-#	127.0.0.1 test.ssp.dayainfo.com 
-#	127.0.0.1 test.hznussp.dayainfo.com
-#	127.0.0.1 test.hncussp.dayainfo.com
-#	127.0.0.1 test.xlussp.dayainfo.com
-#	127.0.0.1:8081 test.xlussp.dayainfo.com
-#	127.0.0.1 test.hainanssp.dayainfo.com
-#	127.0.0.1 test.sspadmin.dayainfo.com
+#	127.0.0.1	test.ssp.dayainfo.com 
+#	127.0.0.1	test.hznussp.dayainfo.com
+#	127.0.0.1	test.hncussp.dayainfo.com
+#	127.0.0.1	test.xlussp.dayainfo.com
+#	127.0.0.1:8081	test.xlussp.dayainfo.com
+#	127.0.0.1	test.hainanssp.dayainfo.com
+#	127.0.0.1	test.sspadmin.dayainfo.com
 #	127.0.0.1	test.hitssp.dayainfo.com
-#	127.0.0.1 test.swustssp.dayainfo.com
-#	127.0.0.1 test.uestcssp.dayainfo.com
-#	127.0.0.1 subject.dayainfo.com
-	127.0.0.1 test.tjufessp.dayainfo.com
-	127.0.0.1	test.dayalib.dayainfo.com
+#	127.0.0.1	test.swustssp.dayainfo.com
+#	127.0.0.1	test.uestcssp.dayainfo.com
+#	127.0.0.1	subject.dayainfo.com
+#	127.0.0.1	test.tjufessp.dayainfo.com
+#	127.0.0.1	test.dayalib.dayainfo.com
 #	127.0.0.1	dayalib.dayainfo.com
-#	122.112.16.72 apps.chaoxing.com
-#	122.112.16.72 group.yd.chaoxing.com
-#	127.0.0.1 test.saussp.dayainfo.com
-	127.0.0.1 test.cibosssp.dayainfo.com
+#	122.112.16.72	apps.chaoxing.com
+#	122.112.16.72	group.yd.chaoxing.com
+#	127.0.0.1	test.saussp.dayainfo.com
+#	127.0.0.1	test.cibosssp.dayainfo.com
 
 
 # Modified hosts start
@@ -3907,3 +3907,4 @@
 # apkpure End
 
 # Modified hosts end
+
