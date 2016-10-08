@@ -1,67 +1,72 @@
 """"""""""""""""""""""""""""""
-"»ù±¾ÉèÖÃ
+"åŸºæœ¬è®¾ç½®
 """"""""""""""""""""""""""""""
-"ÏÔÊ¾ĞĞºÅ
+"æ˜¾ç¤ºè¡Œå·
 set number
-"ÏÔÊ¾¹â±êµÄ×ø±ê
+"æ˜¾ç¤ºå…‰æ ‡çš„åæ ‡
 set ruler
-color elflord
-"ÉèÖÃTab¼üµÄ¿í¶È
+""color elflord
+"è®¾ç½®Tabé”®çš„å®½åº¦
 set shiftwidth=4
 set tabstop=4
-"ÉèÖÃĞĞ¼ä¾à
+"è®¾ç½®è¡Œé—´è·
 set linespace=8
-"½ûÓÃ×Ô¶¯Ëõ½ø
+"ç¦ç”¨è‡ªåŠ¨ç¼©è¿›
 set noautoindent
-""""""""""""""""""""""""""""""
-"ÉèÖÃ×ÖÌåConsolas
+"è®¾ç½®å­—ä½“Consolas
 "set guifont=Consolas:h11
-set guifont=SourceCodePro-Regular:h11  
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
-""""""""""""""""""""""""""""""
-"¸ù¾İ±à¼­Ä£Ê½¸ü¸ÄÊäÈë·¨¹â±êÑÕÉ«£¬Í¬Ê±½ûÓÃIME×Ô¶¯ÇĞ»»
+"æ ¹æ®ç¼–è¾‘æ¨¡å¼æ›´æ”¹è¾“å…¥æ³•å…‰æ ‡é¢œè‰²ï¼ŒåŒæ—¶ç¦ç”¨IMEè‡ªåŠ¨åˆ‡æ¢
 if has('multi_byte_ime')
     hi Cursor guifg=bg guibg=Orange gui=NONE
     hi CursorIM guifg=NONE guibg=Skyblue gui=NONE
     set iminsert=0 imsearch=0
 endif
-"ÓëWindows¹²Ïí¼ôÌù°å
+"ä¸Windowså…±äº«å‰ªè´´æ¿
 set clipboard+=unnamed
-"±à¼­vimrcÖ®ºó£¬ÖØĞÂ¼ÓÔØ
+"ç¼–è¾‘vimrcä¹‹åï¼Œé‡æ–°åŠ è½½
 "autocmd! bufwritepost _vimrc source $VIM/_vimrc
-"¼´Ê±ËÑË÷²¢¸ßÁÁ
+"å³æ—¶æœç´¢å¹¶é«˜äº®
 set incsearch
 set hlsearch
-""""""""""""""""""""""""""""""
-"ÉèÖÃ±àÂë
+"">>>>>>>>>>ç¼–ç 
+"è®¾ç½®ç¼–ç 
+""Vim åœ¨ä¸å±å¹•/é”®ç›˜äº¤äº’æ—¶ä½¿ç”¨çš„ç¼–ç (å–å†³äºå®é™…çš„ç»ˆç«¯çš„è®¾å®š)        
 set encoding=utf-8
-set fileencodings=utf-8,chinese,latin-1
-if has("win32")
-set fileencoding=chinese
-else
-set fileencoding=utf-8
-endif
-"½â¾ö²Ëµ¥ÂÒÂë
+set langmenu=zh_CN.UTF-8
+set termencoding=utf-8
+set fileencodings=utf-8,chinese,latin-1,gb2312,gbk,gb18030,big5
+""set fencs=utf8,gbk,gb2312,gb18030,cp936 
+"è§£å†³èœå•ä¹±ç 
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-"½â¾öconsleÊä³öÂÒÂë
+"è§£å†³consleè¾“å‡ºä¹±ç 
 language messages zh_CN.utf-8
-""""""""""""""""""""""""""""""
-"ÉèÖÃ²»±¸·İ
+"è®¾ç½®ä¸­æ–‡æç¤º
+language messages zh_CN.utf-8 
+"è®¾ç½®ä¸­æ–‡å¸®åŠ©
+set helplang=cn
+"è®¾ç½®ä¸ºåŒå­—å®½æ˜¾ç¤ºï¼Œå¦åˆ™æ— æ³•å®Œæ•´æ˜¾ç¤ºå¦‚:â˜†
+""set ambiwidth=double
+""<<<<<<<<<<ç¼–ç 
+"">>>>>>>>>>å¤‡ä»½
+""è®¾ç½®ä¸å¤‡ä»½
 set nobackup
 set nowritebackup
 set noswapfile
-""""""""""""""""""""""""""""""
-" Éè¶¨docÎÄµµÄ¿Â¼
+""vim80 setting
+set noundofile
+""å¤‡ä»½<<<<<<<<<<
+" è®¾å®šdocæ–‡æ¡£ç›®å½•
 "let helptags=$VIMFILES.'/doc'
 """"""""""""""""""""""""""""""
-"¶Ô±ÈÎÄµµ
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"å¯¹æ¯”æ–‡æ¡£
 set diffexpr=MyDiff()
-function MyDiff()
+"æ›´æ–°vimrcè‹¥æç¤ºâ€œMyDiffå·²å­˜åœ¨â€ï¼Œåˆ™æ·»åŠ æƒŠå¹å·
+function! MyDiff()
   let opt = '-a --binary '
   if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
@@ -84,7 +89,7 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 "Set mapleader
 let mapleader = ","
 nmap mm :%s/\r//g<cr>
@@ -94,195 +99,288 @@ nmap mm :%s/\r//g<cr>
 "map <silent> <leader>ee :e D:\Program Files (x86)\Vim\_vimrc
 "When .vimrc is edited, reload it
 "autocmd! bufwritepost .vimrc source ~/.vimrc 
-"""""""""""""""""""""""""Plugin Manager""""""""""""""Vundle
+""""""""""""""""""""""""""""""Plugin Manager
 set nocompatible " be iMproved, required
 filetype off  " required
 " set the runtime path to include Vundle and initialize
-"VundleµÄÂ·¾¶
-set rtp+=$VIM/vimfiles/bundle/vundle.vim 
+"">>>>>>>>>>Vundle
+"Vundleçš„è·¯å¾„
+set rtp+=$VIM/vimfiles/bundle/vundle
 " alternatively, pass a path where Vundle should install plugins
-"²å¼şµÄ°²×°Â·¾¶
+"æ’ä»¶çš„å®‰è£…è·¯å¾„
 "call vundle#begin('~/some/path/here')
 call vundle#rc('$VIM/vimfiles/bundle')  
 Bundle 'gmarik/vundle'
 filetype plugin indent on    " required
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""tags
+""<<<<<<<<<<Vundle
+"">>>>>>>>>>tags
 "set tags =/
-"×Ô¶¯ÏòÉÏ¼¶ÕÒtag
+"è‡ªåŠ¨å‘ä¸Šçº§æ‰¾tag
 set tags=tags;
 set autochdir
-" °´ÏÂF8ÖØĞÂÉú³ÉtagÎÄ¼ş£¬²¢¸üĞÂtaglist
+" æŒ‰ä¸‹F8é‡æ–°ç”Ÿæˆtagæ–‡ä»¶ï¼Œå¹¶æ›´æ–°taglist
 "map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
 "imap <F8> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""taglist
+""<<<<<<<<<<tags
+"">>>>>>>>>>taglist
 Bundle 'taglist.vim'
-let Tlist_Auto_Open = 1	"Æô¶¯vimºó£¬×Ô¶¯´ò¿ª/¹Ø±Õtaglist´°¿Ú__Auto__Open__
-let Tlist_Show_Menu = 0	"ÔÚgvimÖĞ£¬×Ô¶¯ÏÔÊ¾/Òş²Øtaglist²Ëµ¥
-let Tlist_Show_One_File = 1	"²»Í¬Ê±ÏÔÊ¾¶à¸öÎÄ¼şµÄtag£¬Ö»ÏÔÊ¾µ±Ç°ÎÄ¼şµÄ
-let Tlist_Exit_OnlyWindow = 1	"Èç¹ûtaglist´°¿ÚÊÇ×îºóÒ»¸ö´°¿Ú£¬ÔòÍË³övim
-let Tlist_Use_SingleClick = 0	"µ¥/Ë«»÷tagÌø×ª
-let Tlist_Use_Right_Window = 0	"ÔÚ×ó/ÓÒ²à´°¿ÚÖĞÏÔÊ¾taglist´°¿Ú(Ä¬ÈÏÊÇ×ó²à)
-"let Tlist_Show_Menu=1	"ÏÔÊ¾taglist²Ëµ¥
-"let Tlist_GainFocus_On_ToggleOpen = 1	"TlistToggle´ò¿ªtaglist,ÊäÈë½¹µãÔÚtaglist´°¿ÚÖĞ
-"Tlist_WinHeightºÍTlist_WinWidth¿ÉÒÔÉèÖÃtaglist´°¿ÚµÄ¸ß¶ÈºÍ¿í¶È¡£
-"Tlist_Use_Horiz_WindowÎª£±ÉèÖÃtaglist´°¿ÚºáÏòÏÔÊ¾£»
-"TlistÓ³Éä
-nmap ,tl :TlistToggle<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""BufExplorer
+let Tlist_Auto_Open = 1	"å¯åŠ¨vimåï¼Œè‡ªåŠ¨æ‰“å¼€/å…³é—­taglistçª—å£__Auto__Open__
+let Tlist_Show_Menu = 0	"åœ¨gvimä¸­ï¼Œè‡ªåŠ¨æ˜¾ç¤º/éšè—taglistèœå•
+let Tlist_Show_One_File = 1	"ä¸åŒæ—¶æ˜¾ç¤ºå¤šä¸ªæ–‡ä»¶çš„tagï¼Œåªæ˜¾ç¤ºå½“å‰æ–‡ä»¶çš„
+let Tlist_Exit_OnlyWindow = 1	"å¦‚æœtaglistçª—å£æ˜¯æœ€åä¸€ä¸ªçª—å£ï¼Œåˆ™é€€å‡ºvim
+let Tlist_Use_SingleClick = 0	"å•/åŒå‡»tagè·³è½¬
+let Tlist_Use_Right_Window = 0	"åœ¨å·¦/å³ä¾§çª—å£ä¸­æ˜¾ç¤ºtaglistçª—å£(é»˜è®¤æ˜¯å·¦ä¾§)
+"let Tlist_Show_Menu=1	"æ˜¾ç¤ºtaglistèœå•
+"let Tlist_GainFocus_On_ToggleOpen = 1	"TlistToggleæ‰“å¼€taglist,è¾“å…¥ç„¦ç‚¹åœ¨taglistçª—å£ä¸­
+"Tlist_WinHeightå’ŒTlist_WinWidthå¯ä»¥è®¾ç½®taglistçª—å£çš„é«˜åº¦å’Œå®½åº¦ã€‚
+"Tlist_Use_Horiz_Windowä¸ºï¼‘è®¾ç½®taglistçª—å£æ¨ªå‘æ˜¾ç¤ºï¼›
+"Tlistæ˜ å°„
+nmap <Leader>tl :TlistToggle<CR>
+"">>>>>>>>>>taglist
+""BufExplorer
 let g:bufExplorerDefaultHelp=0    " Do not show default help
-""""""""""""""""""""""""""""""""""""""""""""""""vim-airline
-"×´Ì¬À¸ÔöÇ¿²å¼ş,°üÀ¨ÁËbufferÏÔÊ¾ÌõÀ©Õ¹smart tab lineÒÔ¼°¼¯³ÉÁËÒ»Ğ©²å¼ş"
+"">>>>>>>>>>powerline-font
+Bundle 'powerline/fonts'
+""<<<<<<<<<<powerline-font
+"">>>>>>>>>>vim-airline
+"çŠ¶æ€æ å¢å¼ºæ’ä»¶,åŒ…æ‹¬äº†bufferæ˜¾ç¤ºæ¡æ‰©å±•smart tab lineä»¥åŠé›†æˆäº†ä¸€äº›æ’ä»¶"
 Bundle 'bling/vim-airline'
+""<<<<<<<<<<vim-airline
+"">>>>>>>>>>vim-airline-themes
 Bundle 'vim-airline/vim-airline-themes'
 let g:airline_theme="luna" 
-"Õâ¸öÊÇ°²×°×ÖÌåºó ±ØĞëÉèÖÃ´ËÏî" 
+"è¿™ä¸ªæ˜¯å®‰è£…å­—ä½“å å¿…é¡»è®¾ç½®æ­¤é¡¹" 
 let g:airline_powerline_fonts = 1   
-"´ò¿ªtabline¹¦ÄÜ,·½±ã²é¿´BufferºÍÇĞ»»£¬Õâ¸ö¹¦ÄÜ±È½Ï²»´í"
-"ÎÒ»¹Ê¡È¥ÁËminibufexpl²å¼ş£¬ÒòÎªÎÒÏ°¹ßÔÚ1¸öTabÏÂÓÃ¶à¸öbuffer"
+"æ‰“å¼€tablineåŠŸèƒ½,æ–¹ä¾¿æŸ¥çœ‹Bufferå’Œåˆ‡æ¢ï¼Œè¿™ä¸ªåŠŸèƒ½æ¯”è¾ƒä¸é”™"
+"æˆ‘è¿˜çœå»äº†minibufexplæ’ä»¶ï¼Œå› ä¸ºæˆ‘ä¹ æƒ¯åœ¨1ä¸ªTabä¸‹ç”¨å¤šä¸ªbuffer"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-" ÉèÖÃconsolas×ÖÌå"
-"set guifont=Consolas\ for\ Powerline\ FixedD:h11
-
-"ÉèÖÃ×´Ì¬À¸·ûºÅÏÔÊ¾£¬ÏÂÃæ±àÂëÓÃË«ÒıºÅ"
- " let g:Powerline_symbols="fancy"
- " let g:airline_symbols = {}
- " let g:airline_left_sep = "\u2b80" 
- " let g:airline_left_alt_sep = "\u2b81"
- " let g:airline_right_sep = "\u2b82"
- " let g:airline_right_alt_sep = "\u2b83"
- " let g:airline_symbols.branch = "\u2b60"
- " let g:airline_symbols.readonly = "\u2b64"
- " let g:airline_symbols.linenr = "\u2b61"
-  "ÉèÖÃÇĞ»»Buffer¿ì½İ¼ü"
+""let g:airline#extensions#tabline#left_sep = ' '
+""let g:airline#extensions#tabline#left_alt_sep = '|'
+" è®¾ç½®consolaså­—ä½“"
+"set guifont=Consolas:h11
+"set guifont=SourceCodePro-Regular:h11
+""å¼¹å‡ºæ¡†é€‰æ‹©å­—ä½“
+""set guifont=*
+set guifont=Sauce_Code_Powerline:h12:cANSI
+"è®¾ç½®çŠ¶æ€æ ç¬¦å·æ˜¾ç¤ºï¼Œä¸‹é¢ç¼–ç ç”¨åŒå¼•å·"
+""Plan A
+ ""   let g:Powerline_symbols="fancy"
+ ""   let g:airline_symbols = {}
+ ""   let g:airline_left_sep = "\u2b80" 
+ ""   let g:airline_left_alt_sep = "\u2b81"
+ ""   let g:airline_right_sep = "\u2b82"
+ ""   let g:airline_right_alt_sep = "\u2b83"
+ ""   let g:airline_symbols.branch = "\u2b60"
+ ""   let g:airline_symbols.readonly = "\u2b64"
+ ""   let g:airline_symbols.linenr = "\u2b61"
+""Plan B
+" airline {{{
+ ""   if !exists('g:airline_symbols')
+ ""       let g:airline_symbols = {}
+ ""   endif
+ ""   let g:airline_left_sep = 'â–¶'
+ ""   let g:airline_left_alt_sep = 'â¯'
+ ""   let g:airline_right_sep = 'â—€'
+ ""   let g:airline_right_alt_sep = 'â®'
+ ""   let g:airline_symbols.linenr = 'Â¶'
+ ""   let g:airline_symbols.branch = 'â‡'
+    " æ˜¯å¦æ‰“å¼€tabline
+    " let g:airline#extensions#tabline#enabled = 1
+" }}}
+  "è®¾ç½®åˆ‡æ¢Bufferå¿«æ·é”®"
  nnoremap <C-N> :bn<CR>
  nnoremap <C-P> :bp<CR>
- "ÉèÖÃ¶¥²¿tablineÀ¸·ûºÅÏÔÊ¾"
+ "è®¾ç½®é¡¶éƒ¨tablineæ ç¬¦å·æ˜¾ç¤º"
  "let g:airline#extensions#tabline#left_sep = "\u2b80"
  "let g:airline#extensions#tabline#left_alt_sep = "\u2b81"
 set laststatus=2
-"""""""""""""""""""""""""""""""""""""""""""""MiniBufExplorer
-""""""""Ìá¹©¶àÎÄ¼şÍ¬Ê±±à¼­¹¦ÄÜ£¬²¢ÔÚ±à¼­Æ÷ÉÏ·½ÏÔÊ¾ÎÄ¼şµÄ±êÇ©
-Bundle 'fholgado/minibufexpl.vim'
+""<<<<<<<<<<<vim-airline-themes
+"">>>>>>>>>>seti-ui
+Bundle 'trusktr/seti.vim'
+color seti
+""<<<<<<<<<<seti-ui
+"">>>>>>>>>>MiniBufExplorer
+""æä¾›å¤šæ–‡ä»¶åŒæ—¶ç¼–è¾‘åŠŸèƒ½ï¼Œå¹¶åœ¨ç¼–è¾‘å™¨ä¸Šæ–¹æ˜¾ç¤ºæ–‡ä»¶çš„æ ‡ç­¾
+"Bundle 'fholgado/minibufexpl.vim'
 "let loaded_minibufexplorer = 1
-"<C-Tab>ÏòÇ°/<C-S-Tab>ºóÑ­»·ÇĞ»»µ½Ã¿¸öbufferÉÏ,²¢ÔÚµ±Ç°´°¿Ú´ò¿ª
+"<C-Tab>å‘å‰/<C-S-Tab>åå¾ªç¯åˆ‡æ¢åˆ°æ¯ä¸ªbufferä¸Š,å¹¶åœ¨å½“å‰çª—å£æ‰“å¼€
 let g:miniBufExplMapCTabSwitchBufs = 1
-"ÓÃ<C-¼ıÍ·¼ü>ÇĞ»»µ½ÉÏÏÂ×óÓÒ´°¿ÚÖĞÈ¥
+"ç”¨<C-ç®­å¤´é”®>åˆ‡æ¢åˆ°ä¸Šä¸‹å·¦å³çª—å£ä¸­å»
 let g:miniBufExplMapWindowNavArrows = 1
-"""""""""""""""""""""""""""""""""""""""""""""""""""showmarks
+""<<<<<<<<<<MiniBufExplorer
+"">>>>>>>>>>ShowMarks7
 Bundle 'ShowMarks7'
 " Enable ShowMarks
 let showmarks_enable = 1
 " Show which marks
-" Ö»ÏÔÊ¾È«²¿µÄ´óĞ´±ê¼ÇºÍĞ¡Ğ´£¬²¢¸ßÁÁÕâÁ½ÖÖ±ê¼Ç
-let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+" åªæ˜¾ç¤ºå…¨éƒ¨çš„å¤§å†™æ ‡è®°å’Œå°å†™ï¼Œå¹¶é«˜äº®è¿™ä¸¤ç§æ ‡è®°
+"let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+"å–æ¶ˆplä¹¦ç­¾
+let showmarks_include = "abcdefghijkmnoqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " Ignore help, quickfix, non-modifiable buffers
-" ¶ÔÎÄ¼şÀàĞÍÎªhelp¡¢quickfixºÍ²»¿ÉĞŞ¸ÄµÄ»º³åÇø£¬Ôò²»ÏÔÊ¾±ê¼ÇµÄÎ»ÖÃ
+" å¯¹æ–‡ä»¶ç±»å‹ä¸ºhelpã€quickfixå’Œä¸å¯ä¿®æ”¹çš„ç¼“å†²åŒºï¼Œåˆ™ä¸æ˜¾ç¤ºæ ‡è®°çš„ä½ç½®
 let showmarks_ignore_type = "hqm"
-" Hilight lower & upper marksÕûĞĞ¸ßÁÁ
+" Hilight lower & upper marksæ•´è¡Œé«˜äº®
 let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1 
-"showmarks    - ¿ì½İ¼ü
-"<Leader>mt   - ´ò¿ª/¹Ø±ÕShowMarks²å¼ş
-"<Leader>mo   - Ç¿ÖÆ´ò¿ªShowMarks²å¼ş
-"<Leader>mh   - Çå³ıµ±Ç°ĞĞµÄ±ê¼Ç
-"<Leader>ma   - Çå³ıµ±Ç°»º³åÇøÖĞËùÓĞµÄ±ê¼Ç
-"<Leader>mm   - ÔÚµ±Ç°ĞĞ´òÒ»¸ö±ê¼Ç£¬Ê¹ÓÃÏÂÒ»¸ö¿ÉÓÃµÄ±ê¼ÇÃû 
-"""""""""""""""""""""""""""""""""""""""""""""""""markbrowser
+"showmarks    - å¿«æ·é”®
+"<Leader>mt   - æ‰“å¼€/å…³é—­ShowMarksæ’ä»¶
+"<Leader>mo   - å¼ºåˆ¶æ‰“å¼€ShowMarksæ’ä»¶
+"<Leader>mh   - æ¸…é™¤å½“å‰è¡Œçš„æ ‡è®°
+"<Leader>ma   - æ¸…é™¤å½“å‰ç¼“å†²åŒºä¸­æ‰€æœ‰çš„æ ‡è®°
+"<Leader>mm   - åœ¨å½“å‰è¡Œæ‰“ä¸€ä¸ªæ ‡è®°ï¼Œä½¿ç”¨ä¸‹ä¸€ä¸ªå¯ç”¨çš„æ ‡è®°å 
+""<<<<<<<<<<showmarks7
+"">>>>>>>>>>markbrowser
 Bundle 'aur-archive/vim-markbrowser'
 nmap <silent> <Leader>mb :MarksBrowser<CR> 
-""""""""""""""""""""""""""""""""""""""""""""""NERD_commenter
-Bundle 'redguardtoo/evil-nerd-commenter'
-" \cc ×¢ÊÍµ±Ç°ĞĞºÍÑ¡ÖĞĞĞ  
-" \cn Ã»ÓĞ·¢ÏÖºÍ\ccÓĞÇø±ğ  
-" \c<¿Õ¸ñ> Èç¹û±»Ñ¡ÇøÓòÓĞ²¿·Ö±»×¢ÊÍ£¬Ôò¶Ô±»Ñ¡ÇøÓòÖ´ĞĞÈ¡Ïû×¢ÊÍ²Ù×÷£¬ÆäËüÇé¿öÖ´ĞĞ·´×ª×¢ÊÍ²Ù×÷  
-" \cm ¶Ô±»Ñ¡ÇøÓòÓÃÒ»¶Ô×¢ÊÍ·û½øĞĞ×¢ÊÍ£¬Ç°ÃæµÄ×¢ÊÍ¶ÔÃ¿Ò»ĞĞ¶¼»áÌí¼Ó×¢ÊÍ  
-" \ci Ö´ĞĞ·´×ª×¢ÊÍ²Ù×÷£¬Ñ¡ÖĞÇøÓò×¢ÊÍ²¿·ÖÈ¡Ïû×¢ÊÍ£¬·Ç×¢ÊÍ²¿·ÖÌí¼Ó×¢ÊÍ  
-" \cs Ìí¼ÓĞÔ¸ĞµÄ×¢ÊÍ£¬´úÂë¿ªÍ·½éÉÜ²¿·ÖÍ¨³£Ê¹ÓÃ¸Ã×¢ÊÍ  
-" \cy Ìí¼Ó×¢ÊÍ£¬²¢¸´ÖÆ±»Ìí¼Ó×¢ÊÍµÄ²¿·Ö  
-" \c$ ×¢ÊÍµ±Ç°¹â±êµ½¸ÃĞĞ½áÎ²µÄÄÚÈİ  
-" \cA Ìø×ªµ½¸ÃĞĞ½áÎ²Ìí¼Ó×¢ÊÍ£¬²¢½øÈë±à¼­Ä£Ê½  
-" \ca ×ª»»×¢ÊÍµÄ·½Ê½£¬±ÈÈç£º /**/ºÍ//  
-" \cl \cb ×ó¶ÔÆëºÍ×óÓÒ¶ÔÆä£¬×óÓÒ¶ÔÆäÖ÷ÒªÕë¶Ô/**/  
-" \cu È¡Ïû×¢ÊÍ  
-""""""""""""""""""""""""""""""""""""""""""""""""""TxtBrowser
+""<<<<<<<<<<markbrowser
+"">>>>>>>>>>evil_nerd_commenter
+"Bundle 'redguardtoo/evil-nerd-commenter'
+" \cc æ³¨é‡Šå½“å‰è¡Œå’Œé€‰ä¸­è¡Œ  
+" \cn æ²¡æœ‰å‘ç°å’Œ\ccæœ‰åŒºåˆ«  
+" \c<ç©ºæ ¼> å¦‚æœè¢«é€‰åŒºåŸŸæœ‰éƒ¨åˆ†è¢«æ³¨é‡Šï¼Œåˆ™å¯¹è¢«é€‰åŒºåŸŸæ‰§è¡Œå–æ¶ˆæ³¨é‡Šæ“ä½œï¼Œå…¶å®ƒæƒ…å†µæ‰§è¡Œåè½¬æ³¨é‡Šæ“ä½œ  
+" \cm å¯¹è¢«é€‰åŒºåŸŸç”¨ä¸€å¯¹æ³¨é‡Šç¬¦è¿›è¡Œæ³¨é‡Šï¼Œå‰é¢çš„æ³¨é‡Šå¯¹æ¯ä¸€è¡Œéƒ½ä¼šæ·»åŠ æ³¨é‡Š  
+" \ci æ‰§è¡Œåè½¬æ³¨é‡Šæ“ä½œï¼Œé€‰ä¸­åŒºåŸŸæ³¨é‡Šéƒ¨åˆ†å–æ¶ˆæ³¨é‡Šï¼Œéæ³¨é‡Šéƒ¨åˆ†æ·»åŠ æ³¨é‡Š  
+" \cs æ·»åŠ æ€§æ„Ÿçš„æ³¨é‡Šï¼Œä»£ç å¼€å¤´ä»‹ç»éƒ¨åˆ†é€šå¸¸ä½¿ç”¨è¯¥æ³¨é‡Š  
+" \cy æ·»åŠ æ³¨é‡Šï¼Œå¹¶å¤åˆ¶è¢«æ·»åŠ æ³¨é‡Šçš„éƒ¨åˆ†  
+" \c$ æ³¨é‡Šå½“å‰å…‰æ ‡åˆ°è¯¥è¡Œç»“å°¾çš„å†…å®¹  
+" \cA è·³è½¬åˆ°è¯¥è¡Œç»“å°¾æ·»åŠ æ³¨é‡Šï¼Œå¹¶è¿›å…¥ç¼–è¾‘æ¨¡å¼  
+" \ca è½¬æ¢æ³¨é‡Šçš„æ–¹å¼ï¼Œæ¯”å¦‚ï¼š /**/å’Œ//  
+" \cl \cb å·¦å¯¹é½å’Œå·¦å³å¯¹å…¶ï¼Œå·¦å³å¯¹å…¶ä¸»è¦é’ˆå¯¹/**/  
+" \cu å–æ¶ˆæ³¨é‡Š  
+""<<<<<<<<<<evil_nerd_commenter
+"">>>>>>>>>>TxtBrowser
 "required_______TxtBrowser.vim
 Bundle 'TxtBrowser'
 let tlist_txt_settings = 'txt;c:content;f:figures;t:tables'
 au BufRead,BufNewFile *.txt setlocal ft=txt
-"___________________TxtBrowser
-"<Leader>s: ÓÃËÑË÷ÒıÇæ(¿É¶¨ÖÆ, Ä¬ÈÏÎªgoogle)ËÑË÷¹â±êÏÂµÄµ¥´Ê»òÑ¡ÖĞµÄÎÄ±¾.
-"<Leader>f: ÓÃÍøÂç×Öµä(¿É¶¨ÖÆ, Ä¬ÈÏÎªgoogle.cn)¶Ô¹â±êÏÂµÄµ¥´Ê»òÑ¡ÖĞµÄÎÄ±¾²é×Öµä.
-"<Leader>g: ´ò¿ª¹â±êÏÂ»òÑ¡ÖĞµÄURL.
-"<Leader>h: ¸ßÁÁ¹â±êÏÂµÄµ¥´Ê»òÑ¡ÖĞµÄÎÄ±¾(¿É¿çĞĞ).
-"*:	ÏòÇ°ËÑË÷¹â±êÏÂµÄµ¥´Ê»òÑ¡ÖĞµÄÎÄ±¾(¿É¿çĞĞ)
-"?:	ÏòºóËÑË÷¹â±êÏÂµÄµ¥´Ê»òÑ¡ÖĞµÄÎÄ±¾(¿É¿çĞĞ)
-""""""""""""""""""""""""""""""
-" xptemplate  
-let g:xptemplate_vars = "SParg=&BRfun= &BRloop= "   " ´úÂë½ôÌùÀ¨ºÅ,º¯ÊıÃûµ¥ĞĞ,»¨À¨ºÅ²»¶ÔÆë  
-let php_noShortTags = 1                             " ½ûÓÃphp¶Ì±ê¼Ç  
-let g:xptemplate_brace_complete = "([{\""         " À¨ºÅÒıºÅ×Ô¶¯²¹È«£¬²¿·Ö´úÂëËõ½øÓĞÎÊÌâ  
-"""""""""""""""""""""""""""""""""""""""""""""""""""Markdown
+"<Leader>s: ç”¨æœç´¢å¼•æ“(å¯å®šåˆ¶, é»˜è®¤ä¸ºgoogle)æœç´¢å…‰æ ‡ä¸‹çš„å•è¯æˆ–é€‰ä¸­çš„æ–‡æœ¬.
+"<Leader>f: ç”¨ç½‘ç»œå­—å…¸(å¯å®šåˆ¶, é»˜è®¤ä¸ºgoogle.cn)å¯¹å…‰æ ‡ä¸‹çš„å•è¯æˆ–é€‰ä¸­çš„æ–‡æœ¬æŸ¥å­—å…¸.
+"<Leader>g: æ‰“å¼€å…‰æ ‡ä¸‹æˆ–é€‰ä¸­çš„URL.
+"<Leader>h: é«˜äº®å…‰æ ‡ä¸‹çš„å•è¯æˆ–é€‰ä¸­çš„æ–‡æœ¬(å¯è·¨è¡Œ).
+"*:	å‘å‰æœç´¢å…‰æ ‡ä¸‹çš„å•è¯æˆ–é€‰ä¸­çš„æ–‡æœ¬(å¯è·¨è¡Œ)
+"?:	å‘åæœç´¢å…‰æ ‡ä¸‹çš„å•è¯æˆ–é€‰ä¸­çš„æ–‡æœ¬(å¯è·¨è¡Œ)
+""<<<<<<<<<<TxtBrowser
+"">>>>>>>>>>Markdown
 Bundle 'Markdown'
 Bundle 'Markdown-syntax'
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
-"½ûÓÃÁËvim-markdownµÄ×Ô¶¯ÕÛµş
+"ç¦ç”¨äº†vim-markdownçš„è‡ªåŠ¨æŠ˜å 
 let g:vim_markdown_folding_disabled=1
-"""""""""""""""""""""""""""""""""""""""""""""""""""tabular
+""<<<<<<<<<<Markdown
+"">>>>>>>>>>tabular
 Bundle 'godlygeek/tabular'
-""""""""""""""""""""""""""""""""""""""""""""""""""""tabula
+""<<<<<<<<<<tabular
+"">>>>>>>>>>xptemplate
 Bundle 'drmingdrmer/xptemplate'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""Ó³Éä
+let g:xptemplate_vars = "SParg=&BRfun= &BRloop= "   " ä»£ç ç´§è´´æ‹¬å·,å‡½æ•°åå•è¡Œ,èŠ±æ‹¬å·ä¸å¯¹é½  
+let php_noShortTags = 1                             " ç¦ç”¨phpçŸ­æ ‡è®°  
+let g:xptemplate_brace_complete = "([{\""         " æ‹¬å·å¼•å·è‡ªåŠ¨è¡¥å…¨ï¼Œéƒ¨åˆ†ä»£ç ç¼©è¿›æœ‰é—®é¢˜  
+""<<<<<<<<<<xptemplate
+"">>>>>>>>>>nerdtree
 Bundle 'scrooloose/nerdtree.git'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""Ó³Éä
-"Ö´ĞĞ¸üĞÂ_vimrc
-nmap ,vimu :surce $VIM/_vimrc<CR>
-"ĞÂ´°±à¼­_vimrc
-nmap <Leader>om :vs $VIM/_vimrc<CR>
-nmap <Leader>em :e $VIM/_vimrc<CR>
-"´ò¿ªhostÎÄ¼ş
-nmap ,ehost :e C:\Windows\System32\drivers\etc\hosts<CR>
-nmap ,ohost :vs C:\Windows\System32\drivers\etc\hosts<CR>
-" ²åÈëÆ¥ÅäÀ¨ºÅ
+" å…³é—­NERDTreeå¿«æ·é”®
+map <leader>t :NERDTreeToggle<CR>
+" æ˜¾ç¤ºè¡Œå·
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+" æ˜¯å¦æ˜¾ç¤ºéšè—æ–‡ä»¶
+let NERDTreeShowHidden=1
+" è®¾ç½®å®½åº¦
+let NERDTreeWinSize=31
+" åœ¨ç»ˆç«¯å¯åŠ¨vimæ—¶ï¼Œå…±äº«NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
+" å¿½ç•¥ä¸€ä¸‹æ–‡ä»¶çš„æ˜¾ç¤º
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+" æ˜¾ç¤ºä¹¦ç­¾åˆ—è¡¨
+let NERDTreeShowBookmarks=1
+""<<<<<<<<<<nerdtree
+"">>>>>>>>>>nerdtree-git-plugin
+Bundle 'Xuyuanp/nerdtree-git-plugin'
+""<<<<<<<<<<nerdtree-git-plugin
+"">>>>>>>>>>DrawIt
+""vimç”»å›¾
+""http://www.vim.org/scripts/script.php?script_id=40
+""https://github.com/vim-scripts/DrawIt
+"Bundle 'vim-scripts/DrawIt'
+""Manual
+""<left>       move and draw left
+""<right>      move and draw right, inserting lines/space as needed
+""<up>         move and draw up, inserting lines/space as needed
+""<down>       move and draw down, inserting lines/space as needed
+""<s-left>     move left
+""<s-right>    move right, inserting lines/space as needed
+""<s-up>       move up, inserting lines/space as needed
+""<s-down>     move down, inserting lines/space as needed
+""<space>      toggle into and out of erase mode
+"">            draw -> arrow
+""<            draw <- arrow
+""^            draw ^  arrow
+""v            draw v  arrow
+""<pgdn>       replace with a \, move down and right, and insert a \
+""<end>        replace with a /, move down and left,  and insert a /
+""<pgup>       replace with a /, move up   and right, and insert a /
+""<home>       replace with a \, move up   and left,  and insert a \
+""\>           draw fat -> arrow
+""\<           draw fat <- arrow
+""\^           draw fat ^  arrow
+""\v           draw fat v  arrow
+""\a           draw arrow based on corners of visual-block
+""\b           draw box using visual-block selected region
+""\e           draw an ellipse inside visual-block
+""\f           fill a figure with some character
+""\h           create a canvas for \a \b \e \l
+""\l           draw line based on corners of visual block
+""\s           adds spaces to canvas
+""<leftmouse>  select visual block
+""<s-leftmouse>  drag and draw with current brush (register)
+""\ra ... \rz  replace text with given brush/register
+""\pa ...      like \ra ... \rz, except that blanks are considered
+""to be transparent
+""<<<<<<<<<<DrawIt
+""""""""""""""""""""""""""""""æŒ‰é”®æ˜ å°„
+"æ‰§è¡Œæ›´æ–°_vimrc
+nmap <Leader>uvim :source $VIM/_vimrc<CR>
+"æ–°çª—ç¼–è¾‘_vimrc
+nmap <Leader>ovim :vs $VIM/_vimrc<CR>
+nmap <Leader>evim :e $VIM/_vimrc<CR>
+"æ‰“å¼€hostæ–‡ä»¶
+nmap <Leader>ohost :vs C:\Windows\System32\drivers\etc\hosts<CR>
+nmap <Leader>ehost :e C:\Windows\System32\drivers\etc\hosts<CR>
+" æ’å…¥åŒ¹é…æ‹¬å·
 "	inoremap () ()<LEFT>
 "	inoremap [] []<LEFT>
 "	inoremap { {<CR>}<ESC>O
 "	inoremap <> <><LEFT>
 "	inoremap '' ''<LEFT>
 "	inoremap "" ""<LEFT>
-
-" Ctrl + H		¹â±ê×óÒÆÒ»¸ñ
+" Ctrl + H		å…‰æ ‡å·¦ç§»ä¸€æ ¼
 imap <C-H> <Left>
-" Ctrl + L		¹â±êÓÒÒÆÒ»¸ñ
+" Ctrl + L		å…‰æ ‡å³ç§»ä¸€æ ¼
 imap <C-L> <Right>
-" Ctrl + J		¹â±êÖÁÏÂÒ»ĞĞÊ×
+" Ctrl + J		å…‰æ ‡è‡³ä¸‹ä¸€è¡Œé¦–
 imap <C-J> <ESC><Down>I
-" Ctrl + K		¹â±êÖÁÉÏÒ»ĞĞÎ²
+" Ctrl + K		å…‰æ ‡è‡³ä¸Šä¸€è¡Œå°¾
 imap <C-K> <ESC><Up>A
-"ËÑË÷Íêºó°´escÈ¥µô¸ßÁÁ
+"æœç´¢å®ŒåæŒ‰escå»æ‰é«˜äº®
 nnoremap <ESC> :nohl<cr>
 """"""""""""""""""""""""""""""
-"²å¼şÓ³Éä
-""""""""""""""""""""""""""""""
 set fdm=manual
-""""""""""""""""""""""""""""""
-"ÉèÖÃ
-""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""
-"Ê¶±ğÎÄ¼şÀàĞÍ
+""""""""""""""""""""""""""""""æç½®
+"è¯†åˆ«æ–‡ä»¶ç±»å‹
 "set filetype = html
 """"""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""
-""""""""ÉèÖÃWinManager""""""""
-""""""""""""""""""""""""""""""
-"FileExplorer´°¿ÚºÍBufExplorer¹²ÓÃÒ»¸ö´°¿Ú£¬ÔÚBufExplorer´°¿ÚÖĞÊ¹ÓÃ¡±CTRL-N¡°¿ÉÒÔÇĞ»»µ½FileExplorer´°¿Ú£¬ÔÙÊ¹ÓÃÒ»´ÎÔòÓÖÇĞ»»»ØBufExplorer´°¿Ú
-"ÔÚ±äÁ¿g:winManagerWindowLayoutÖĞ£¬Ê¹ÓÃ¡±,¡±·Ö¸ôµÄ²å¼ş£¬ÔÚÍ¬Ò»¸ö´°¿ÚÖĞÏÔÊ¾£¬Ê¹ÓÃ¡±CTRL-N¡°ÔÚ²»Í¬²å¼ş¼äÇĞ»»£»Ê¹ÓÃ¡±|¡±·Ö¸ôµÄ²å¼ş£¬ÔòÔÚÁíÍâÒ»¸ö´°¿ÚÖĞÏÔÊ¾¡£
+""""""""è®¾ç½®WinManager""""""""
+"FileExplorerçª—å£å’ŒBufExplorerå…±ç”¨ä¸€ä¸ªçª—å£ï¼Œåœ¨BufExplorerçª—å£ä¸­ä½¿ç”¨â€CTRL-Nâ€œå¯ä»¥åˆ‡æ¢åˆ°FileExplorerçª—å£ï¼Œå†ä½¿ç”¨ä¸€æ¬¡åˆ™åˆåˆ‡æ¢å›BufExplorerçª—å£
+"åœ¨å˜é‡g:winManagerWindowLayoutä¸­ï¼Œä½¿ç”¨â€,â€åˆ†éš”çš„æ’ä»¶ï¼Œåœ¨åŒä¸€ä¸ªçª—å£ä¸­æ˜¾ç¤ºï¼Œä½¿ç”¨â€CTRL-Nâ€œåœ¨ä¸åŒæ’ä»¶é—´åˆ‡æ¢ï¼›ä½¿ç”¨â€|â€åˆ†éš”çš„æ’ä»¶ï¼Œåˆ™åœ¨å¦å¤–ä¸€ä¸ªçª—å£ä¸­æ˜¾ç¤ºã€‚
 "let g:winManagerWindowLayout = 'TagList,BufExplorer'
 "let g:winManagerWindowLayout = 'FileExplorer,BufExplorer|TagList'
 "let g:winManagerWindowLayout = 'FileExplorer|TagList'
-"WinManagerÓ³Éä
+"WinManageræ˜ å°„
 "nmap ,wm :WMToggle<CR>
-"ÉèÖÃwinmanagerµÄ¿í¶È£¬Ä¬ÈÏÎª25
+"è®¾ç½®winmanagerçš„å®½åº¦ï¼Œé»˜è®¤ä¸º25
 "let g:winManagerWidth = 30
-"ÔÚ½øÈëvimÊ±×Ô¶¯´ò¿ª/¹Ø±Õwinmanager___Auto___Open__
+"åœ¨è¿›å…¥vimæ—¶è‡ªåŠ¨æ‰“å¼€/å…³é—­winmanager___Auto___Open__
 "let g:AutoOpenWinManager = 1
+
