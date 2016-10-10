@@ -299,6 +299,10 @@ let NERDTreeShowBookmarks=1
 "">>>>>>>>>>nerdtree-git-plugin
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 ""<<<<<<<<<<nerdtree-git-plugin
+"">>>>>>>>>>emmet-vim
+Bundle 'mattn/emmet-vim'
+""https://github.com/mattn/emmet-vim
+""<<<<<<<<<<emmet-vim
 "">>>>>>>>>>DrawIt
 ""vim画图
 ""http://www.vim.org/scripts/script.php?script_id=40
