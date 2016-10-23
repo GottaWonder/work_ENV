@@ -105,7 +105,7 @@ filetype off  " required
 " set the runtime path to include Vundle and initialize
 "">>>>>>>>>>Vundle
 "Vundle的路径
-set rtp+=$VIM/vimfiles/bundle/vundle
+set rtp+=$VIM/vimfiles/bundle/vundle.vim
 " alternatively, pass a path where Vundle should install plugins
 "插件的安装路径
 "call vundle#begin('~/some/path/here')
@@ -387,4 +387,5 @@ set fdm=manual
 "let g:winManagerWidth = 30
 "在进入vim时自动打开/关闭winmanager___Auto___Open__
 "let g:AutoOpenWinManager = 1
+
 
