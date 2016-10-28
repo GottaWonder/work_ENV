@@ -32,7 +32,7 @@
 #	127.0.0.1	test.hitssp.dayainfo.com
 #	127.0.0.1	test.swustssp.dayainfo.com
 #	127.0.0.1	test.uestcssp.dayainfo.com
-#	127.0.0.1	subject.dayainfo.com
+#	127.0.0.1 	subject.dayainfo.com
 #	127.0.0.1	test.tjufessp.dayainfo.com
 #	127.0.0.1	test.dayalib.dayainfo.com
 #	127.0.0.1	dayalib.dayainfo.com
@@ -40,6 +40,7 @@
 #	122.112.16.72	group.yd.chaoxing.com
 #	127.0.0.1	test.saussp.dayainfo.com
 #	127.0.0.1	test.cibosssp.dayainfo.com
+#	127.0.0.1 	test.nlicssp.dayainfo.com
 
 
 # Modified hosts start
@@ -3907,4 +3908,6 @@
 # apkpure End
 
 # Modified hosts end
+
+
 
