@@ -105,7 +105,7 @@ filetype off  " required
 " set the runtime path to include Vundle and initialize
 "">>>>>>>>>>Vundle
 "Vundle的路径
-set rtp+=$VIM/vimfiles/bundle/vundle.vim
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 " alternatively, pass a path where Vundle should install plugins
 "插件的安装路径
 "call vundle#begin('~/some/path/here')
