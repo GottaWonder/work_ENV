@@ -87,20 +87,38 @@ function! MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+""
+""if !exist(g:os)
+	if has("win64") || has ("win32") || has("win16")
+		let g:os = "windows"
+	elseif has("unix")
+		let g:os = "linux"
+	else
+		let g:os = substitute(system("uname"), "\n", "", "")
+	endif
+""endif
 ""插入模式快捷键
 iab stime <c-r>=strftime("%H:%M:%S")<cr>
 iab ftime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 iab xfile <c-r>=expand("%:t")<CR>
 ""{	mapper setting
 let mapleader = ","	"Set mapleader
+if g:os == "windows"
 "执行更新_vimrc
-nmap <Leader>uvim :source $VIM/_vimrc<CR>
+	nmap <Leader>uvim :source $VIM/_vimrc<CR>
 "新窗编辑_vimrc
-nmap <Leader>ovim :vs! $VIM/_vimrc<CR>
-nmap <Leader>evim :e! $VIM/_vimrc<CR>
+	nmap <Leader>ovim :vs! $VIM/_vimrc<CR>
+	nmap <Leader>evim :e! $VIM/_vimrc<CR>
 "打开host文件
-nmap <Leader>ohost :vs! C:\Windows\System32\drivers\etc\hosts<CR>
-nmap <Leader>ehost :e! C:\Windows\System32\drivers\etc\hosts<CR>
+	nmap <Leader>ohost :vs! C:\Windows\System32\drivers\etc\hosts<CR>
+	nmap <Leader>ehost :e! C:\Windows\System32\drivers\etc\hosts<CR>
+elseif g:os == "linux"
+	nmap <Leader>uvim :source $VIM/vimrc<CR>
+	nmap <Leader>ovim :vs! $VIM/vimrc<CR>
+	nmap <Leader>evim :e! $VIM/vimrc<CR>
+	nmap <Leader>ohost :vs! /etc/hosts<CR>
+	nmap <Leader>ehost :e! /etc/hosts<CR>
+endif
 ""mapper setting	}	
 ""{	tags
 "set tags =/
