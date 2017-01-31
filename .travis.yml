@@ -22,6 +22,8 @@ install:
 before_script:
 - nvm ls
 - git version
+- npm i coveralls --save-dev
+- cat ./coverage/lcov/lcov.info | ./node_modules/.bin/coveralls
 # script用来执行我们的测试脚本。
 # script:
 after_script:
