@@ -1,0 +1,25 @@
+# 定义构建环境
+language: node_js
+node_js:
+  - "7"
+  - "6"
+# 必须的服务
+services:
+# 配置构建的必须条件
+before_install:
+- git config --global user.name "gottawonder"
+- git config --global user.email "gottawonder@163.com"
+- curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+# 进行构建
+# install步骤用来构建并且启动我们的容器。
+install:
+- nvm install node
+# 安装测试的必须条件
+# before_script步骤只是用来安装测试脚本所必需的库
+before_script:
+- nvm ls
+- git version
+# script用来执行我们的测试脚本。
+# script:
+
+
