@@ -1,8 +1,10 @@
+# 开启基于容器的Travis CI任务，让编译效率更高。
+sudo: false         
 # 定义构建环境
 language: node_js
 node_js:
   - "7"
-  - "6"
+# - "6"
 # 必须的服务
 services:
 # 配置构建的必须条件
@@ -22,4 +24,7 @@ before_script:
 # script用来执行我们的测试脚本。
 # script:
 
+# 每次构建的时候是否通知，如果不想收到通知邮箱，那就设置false吧
+notifications:
+- email: false
 
