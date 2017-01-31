@@ -6,6 +6,9 @@ language: node_js
 node_js:
   - "7"
 # - "6"
+cache:
+  directories:
+    - node_modules
 # 必须的服务
 services:
 # 配置构建的必须条件
@@ -17,18 +20,19 @@ before_install:
 # install步骤用来构建并且启动我们的容器。
 install:
 - nvm install node
-- sudo pip install coverage
 # 安装测试的必须条件
 # before_script步骤只是用来安装测试脚本所必需的库
 before_script:
 - nvm ls
 - git version
 - npm i install karma --save-dev
-- npm i coveralls --save-dev
+- npm i install coveralls --save-dev
 - cat ./coverage/lcov/lcov.info | ./node_modules/.bin/coveralls
 # script用来执行我们的测试脚本。
-# script:
+script:
+#- npm run cover
 after_script:
+- npm run coverage
 - npm run coveralls
 # 每次构建的时候是否通知，如果不想收到通知邮箱，那就设置false吧
 notifications:
