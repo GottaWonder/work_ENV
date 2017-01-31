@@ -25,14 +25,9 @@ install:
 before_script:
 - nvm ls
 - git version
-- npm i install mocha chai --save-dev --verbose
-- npm i install coveralls --save-dev --verbose
-- npm i install istanbul --save-dev --verbose
 # script用来执行我们的测试脚本。
 script:
 after_script:
-- npm run coverage
-- npm run coveralls
 # 每次构建的时候是否通知，如果不想收到通知邮箱，那就设置false吧
 notifications:
 - email: false
