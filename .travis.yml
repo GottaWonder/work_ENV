@@ -17,7 +17,7 @@ before_install:
 # install步骤用来构建并且启动我们的容器。
 install:
 - nvm install node
-- pip install coverage
+- sudo pip install coverage
 # 安装测试的必须条件
 # before_script步骤只是用来安装测试脚本所必需的库
 before_script:
