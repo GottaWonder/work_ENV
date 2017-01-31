@@ -1,3 +1,4 @@
+os: linux
 # 开启基于容器的Travis CI任务，让编译效率更高。
 sudo: false         
 # 定义构建环境
@@ -23,8 +24,8 @@ before_script:
 - git version
 # script用来执行我们的测试脚本。
 # script:
-
+after_script:
+- npm run coveralls
 # 每次构建的时候是否通知，如果不想收到通知邮箱，那就设置false吧
 notifications:
 - email: false
-
