@@ -25,12 +25,11 @@ install:
 before_script:
 - nvm ls
 - git version
-- npm i install karma --save-dev
-- npm i install coveralls --save-dev
-- cat ./coverage/lcov/lcov.info | ./node_modules/.bin/coveralls
+- npm i install mocha chai --save-dev --verbose
+- npm i install coveralls --save-dev --verbose
+- npm i install istanbul --save-dev --verbose
 # script用来执行我们的测试脚本。
 script:
-#- npm run cover
 after_script:
 - npm run coverage
 - npm run coveralls
