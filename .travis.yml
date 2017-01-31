@@ -17,11 +17,13 @@ before_install:
 # install步骤用来构建并且启动我们的容器。
 install:
 - nvm install node
+- pip install coverage
 # 安装测试的必须条件
 # before_script步骤只是用来安装测试脚本所必需的库
 before_script:
 - nvm ls
 - git version
+- npm i install karma --save-dev
 - npm i coveralls --save-dev
 - cat ./coverage/lcov/lcov.info | ./node_modules/.bin/coveralls
 # script用来执行我们的测试脚本。
