@@ -1,179 +1,192 @@
-""""""""""""""""""""""""""""""
-"基本设置
-""""""""""""""""""""""""""""""
-set number	"显示行号
-set ruler	"显示光标的坐标
-set shiftwidth=4	"设置Tab键的宽度
-set tabstop=4	"设置Tab键的宽度
-set cursorline nocursorcolumn	"高亮光标所在行
-"set nocursorcolumn cursorcolumn	"高亮光标所在列
-set noautoindent	"禁用自动缩进
-set nocompatible
-set clipboard+=unnamed	"与Windows共享剪贴板
-set incsearch	"即时搜索并高亮
-set hlsearch	"即时搜索并高亮
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-"根据编辑模式更改输入法光标颜色，同时禁用IME自动切换
-if has('multi_byte_ime')
-    hi Cursor guifg=bg guibg=Orange gui=NONE
-    hi CursorIM guifg=NONE guibg=Skyblue gui=NONE
-    set iminsert=0 imsearch=0
-endif
-"编辑vimrc之后，重新加载
-"autocmd! bufwritepost _vimrc source $VIM/_vimrc
-""{	编码
-"设置编码
-""Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
-set encoding=utf-8
-set langmenu=zh_CN.UTF-8
-set termencoding=utf-8
-set fileencodings=utf-8,chinese,latin-1,gb2312,gbk,gb18030,big5
-""set fencs=utf8,gbk,gb2312,gb18030,cp936
-"解决菜单乱码
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-"解决consle输出乱码
-language messages zh_CN.utf-8
-"设置中文提示
-language messages zh_CN.utf-8
-"设置中文帮助
-set helplang=cn
-"设置为双字宽显示，否则无法完整显示如:☆
-""set ambiwidth=double
-""编码 }
-""{	备份
-""设置不备份
-set nobackup
-set nowritebackup
-set noswapfile
-""vim80 setting
-set noundofile
-""备份	}
-" 设定doc文档目录
-"let helptags=$VIMFILES.'/doc'
-""{	如未使用bundle则手动设置
-"color elflord	"设置主题配色
-" 设置字体
-"set guifont=Consolas:h11
-"set guifont=SourceCodePro-Regular:h11
-"set linespace=8	"设置行间距(使用powerline时，注释此项)
-""如未使用bundle则手动设置	}
-""""""""""""""""""""""""""""""
-"对比文档
-set diffexpr=MyDiff()
-"更新vimrc若提示“MyDiff已存在”，则添加惊叹号
-function! MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ "\<cmd"
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-""
+""""基本设置	{
+	set tabstop=4 "设置Tab键的宽度
+	set shiftwidth=4 "设置自动缩进宽度
+	set noautoindent "禁用自动缩进
+	set clipboard+=unnamed "与Windows共享剪贴板
+	set incsearch "即时搜索并高亮
+	set hlsearch "即时搜索并高亮
+	source $VIMRUNTIME/vimrc_example.vim
+	source $VIMRUNTIME/mswin.vim
+	behave mswin
+	"autocmd! bufwritepost _vimrc source $VIM/_vimrc "编辑vimrc之后，重新加载
+
+	""##编码 {
+		""Vim 在与屏幕/键盘交互时使用的编码(取决于实际的终端的设定)
+		set encoding=utf-8
+		set langmenu=zh_CN.UTF-8
+		set termencoding=utf-8
+		set fileencodings=utf-8,chinese,latin-1,gb2312,gbk,gb18030,big5
+		""set fencs=utf8,gbk,gb2312,gb18030,cp936
+		language messages zh_CN.utf-8	"设置中文提示
+		set helplang=cn	"设置中文帮助
+	""} ##编码
+
+	""解决菜单乱码
+	source $VIMRUNTIME/delmenu.vim
+	source $VIMRUNTIME/menu.vim
+	"set ambiwidth=double "设置为双字宽显示，否则无法完整显示如:☆
+
+	""##备份 {
+		""###设置不备份 {
+		set nobackup
+		set nowritebackup
+		set noswapfile
+		""} ###设置不备份
+	""vim80 setting
+	set noundofile
+	""} ##备份
+
+	let helptags=$VIMFILES.'/doc' " 设定doc文档目录
+""""}	基本设置
+
+""""GVIM UI {
+	set number "显示行号
+	set ruler "显示光标的坐标
+	set cursorline nocursorcolumn "高亮光标所在行
+	"set nocursorcolumn cursorcolumn "高亮光标所在列
+	""根据编辑模式更改输入法光标颜色，同时禁用IME自动切换
+	if has('multi_byte_ime')
+    	hi Cursor guifg=bg guibg=Orange gui=NONE
+    	hi CursorIM guifg=NONE guibg=Skyblue gui=NONE
+    	set iminsert=0 imsearch=0
+	endif
+	""##如未使用bundle则手动设置 {
+		"color elflord	"设置主题配色
+		"set guifont=Consolas:h11 " 设置字体
+		"set guifont=SourceCodePro-Regular:h11
+		"set linespace=8	"设置行间距(使用powerline时，注释此项)
+	""}	##如未使用bundle则手动设置
+""""} GVIM UI
+
+""""操作系统OS {
 ""if !exist(g:os)
 	if has("win64") || has ("win32") || has("win16")
 		let g:os = "windows"
 	elseif has("unix")
-		let g:os = "linux"
+		let g:os = "linux" 
 	else
 		let g:os = substitute(system("uname"), "\n", "", "")
 	endif
 ""endif
-""插入模式快捷键
-iab stime <c-r>=strftime("%H:%M:%S")<cr>
-iab ftime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
-iab xfile <c-r>=expand("%:t")<CR>
-""{	mapper setting
-let mapleader = ","	"Set mapleader
-if g:os == "windows"
-"执行更新_vimrc
-	nmap <Leader>uvim :source $VIM/_vimrc<CR>
-"新窗编辑_vimrc
-	nmap <Leader>ovim :vs! $VIM/_vimrc<CR>
-	nmap <Leader>evim :e! $VIM/_vimrc<CR>
-"打开host文件
-	nmap <Leader>ohost :vs! C:\Windows\System32\drivers\etc\hosts<CR>
-	nmap <Leader>ehost :e! C:\Windows\System32\drivers\etc\hosts<CR>
-elseif g:os == "linux"
-	nmap <Leader>uvim :source $VIM/vimrc<CR>
-	nmap <Leader>ovim :vs! $VIM/vimrc<CR>
-	nmap <Leader>evim :e! $VIM/vimrc<CR>
-	nmap <Leader>ohost :vs! /etc/hosts<CR>
-	nmap <Leader>ehost :e! /etc/hosts<CR>
-endif
-""mapper setting	}	
-""{	tags
-"set tags =/
-"自动向上级找tag
-set tags=tags;
-set autochdir
-" 按下F8重新生成tag文件，并更新taglist
-"map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
-"imap <F8> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
-""tags	}
-""""""""""""""""""""""""""""""Plugin Manager
-" set the runtime path to include Vundle and initialize
-"">>>>>>>>>>Vundle
-set nocompatible " be iMproved, required
-filetype off  " required
-"Vundle的路径
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-" alternatively, pass a path where Vundle should install plugins
-"插件的安装路径
-"call vundle#begin('~/some/path/here')
-call vundle#rc('$VIM/vimfiles/bundle')
-" ##### 插件管理工具
-Bundle 'gmarik/vundle'
-filetype plugin indent on    " required
-""<<<<<<<<<<Vundle
-" ==========================================
-"  bundle 插件管理和配置项
-" -----------------#github
-"   插件来自 github，只需要 ： 作者名/项目名
-"  Bundle 'tomasr/molokai'
-"   插件来自 vim-scripts，直接写插件名就行了
-"  Bundle 'L9'
-"   如使用自己的git库的插件，像下面这样做
-"  Bundle 'git://git.wincent.com/command-t.git'
-" ---------------#git库在本地机器的情况
-"   如使用自己的git库在本地机器，像下面这样做
-"  Bundle 'file:///Users/gmarik/path/to/plugin'
-" ==========================================
-""Bundle字体，这里用来支持vim-airline，也可单独使用
-Bundle 'powerline/fonts'
-""{	Bundle主题
-Bundle 'trusktr/seti.vim'
-"color seti
-Bundle 'altercation/vim-colors-solarized'
-"color solarized
-"set background=light
-"set background=dark
-"set t_Co=256
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-Bundle 'morhetz/gruvbox'
-""[Tips]gruvbox is heavily inspired by badwolf, jellybeans and solarized.
-"" Bundle主题	}
+""""} 操作系统OS
+
+""""Function {
+	""对比文档
+	set diffexpr=MyDiff()
+	function! MyDiff() "更新vimrc若提示“MyDiff已存在”，则添加惊叹号
+		let opt = '-a --binary '
+		if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+			if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+				let arg1 = v:fname_in
+			if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+				let arg2 = v:fname_new
+			if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+				let arg3 = v:fname_out
+			if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+				let eq = ''
+			if $VIMRUNTIME =~ ' '
+  			if &sh =~ "\<cmd"
+      			let cmd = '""' . $VIMRUNTIME . '\diff"'
+      		let eq = '"'
+    	else
+      		let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    	endif
+  		else
+    		let cmd = $VIMRUNTIME . '\diff'
+  		endif
+  	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+	endfunction
+""""} Function
+
+""""Mapper Setting {
+	let mapleader = ","	"Set mapleader
+	""##Insert Mode {
+		iab stime <c-r>=strftime("%H:%M:%S")<cr>
+		iab ftime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
+		iab xfile <c-r>=expand("%:t")<CR>
+	""} ##Insert Mode
+	""##Normal Mode {
+		if g:os == "windows"
+			"执行更新_vimrc
+			nmap <Leader>uvim :source $VIM/_vimrc<CR>
+			"新窗编辑_vimrc
+			nmap <Leader>ovim :vs! $VIM/_vimrc<CR>
+			nmap <Leader>evim :e! $VIM/_vimrc<CR>
+			"打开host文件
+			nmap <Leader>ohost :vs! C:\Windows\System32\drivers\etc\hosts<CR>
+			nmap <Leader>ehost :e! C:\Windows\System32\drivers\etc\hosts<CR>
+		elseif g:os == "linux"
+			nmap <Leader>uvim :source $VIM/vimrc<CR>
+			nmap <Leader>ovim :vs! $VIM/vimrc<CR>
+			nmap <Leader>evim :e! $VIM/vimrc<CR>
+			nmap <Leader>ohost :vs! /etc/hosts<CR>
+			nmap <Leader>ehost :e! /etc/hosts<CR>
+			endif
+	""} ##Normal Mode
+""""} Mapper Setting
+
+""""tags {
+	"set tags =/
+	set tags=tags; "自动向上级找tag
+	set autochdir
+	""按下F8重新生成tag文件，并更新taglist
+	"map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+	""imap <F8> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+""""} tags
+
+""""========== VIM Plugins Block start ========== {
+
+	""===== Vundle Setting ===== {
+		set nocompatible " be iMproved, required
+		filetype off  " required
+		""set the runtime path to include Vundle and initialize
+		set rtp+=$VIM/vimfiles/bundle/Vundle.vim "Vundle的路径
+		call vundle#rc('$VIM/vimfiles/bundle') "插件的安装路径
+	""} ===== Vundle Setting =====
+	
+	""===== Vundle Manual =====	{
+		""-bundle 插件管理和配置项
+		""--github
+			""Bundle 'tomasr/molokai' "插件来自 github，只需要 ： 作者名/项目名
+			""Bundle 'L9' "插件来自 github，只需要 ： 作者名/项目名
+			""Bundle 'git://git.wincent.com/command-t.git' "如使用自己的git库的插件
+		""--git库在本地机器的情况
+			""Bundle 'file:///Users/gmarik/path/to/plugin' "如使用自己的git库在本地机器
+	""}	===== Vundle Manual =====
+
+	""=====	Vundle Plugins start =====	{
+
+		""** Vundle ** (https://github.com/plasticboy/vim-markdown.git)
+		Bundle 'gmarik/vundle'
+		filetype plugin indent on    " required
+
+		""** fonts ** (https://github.com/powerline/fonts)
+		"字体，这里用来支持vim-airline，也可单独使用
+		Bundle 'powerline/fonts' 
+		
+		""##colorsheme {
+			""** seti ** (https://github.com/trusktr/seti.vim)
+			Bundle 'trusktr/seti.vim'
+
+			""** solarized ** (https://github.com/altercation/solarized)
+			Bundle 'altercation/vim-colors-solarized'
+			"set background=light
+			"set background=dark
+			"set t_Co=256
+			"let g:solarized_termcolors=256
+			let g:solarized_termtrans=1
+			let g:solarized_contrast="normal"
+			let g:solarized_visibility="normal"
+
+			""** gruvbox ** (https://github.com/morhetz/gruvbox)
+			Bundle 'morhetz/gruvbox'
+			"[Tips]gruvbox is heavily inspired by badwolf, jellybeans and solarized.
+		""}　##colorsheme		
+
+	""}	Vundle Plugins end
+
+""""} ========== VIM Plugins Block end ==========
+
 "">>>>>>>>>>vim-airline
 "状态栏增强插件,包括了buffer显示条扩展smart tab line以及集成了一些插件
 Bundle 'bling/vim-airline'
@@ -183,11 +196,14 @@ Bundle 'vim-airline/vim-airline-themes'
 "set guifont=Sauce_Code_Powerline:h12:cANSI
 "这个是安装字体后 必须设置此项
 let g:airline_powerline_fonts = 1
-"打开tabline功能,方便查看Buffer和切换，这个功能比较不错
-"我还省去了minibufexpl插件，因为我习惯在1个Tab下用多个buffer
+""打开tabline功能,方便查看Buffer和切换，这个功能比较不错
+""我还省去了minibufexpl插件，因为我习惯在1个Tab下用多个buffer
 let g:airline#extensions#tabline#enabled = 1
+""tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1
+""tabline中当前buffer两端的分隔字符
 ""let g:airline#extensions#tabline#left_sep = ' '
+""tabline中未激活buffer两端的分隔字符
 ""let g:airline#extensions#tabline#left_alt_sep = '|'
 ""可选主题:https://github.com/vim-airline/vim-airline/wiki/Screenshots
 "let g:airline_theme="solarized" "[required] color solarized
@@ -226,11 +242,15 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
  "let g:airline#extensions#tabline#left_alt_sep = "\u2b81"
 ""<<<<<<<<<<<vim-airline-themes
 ""Bundle安装主题统一设置（包括字体、主题、背景、vim-airline等）	{
-"set guifont=*	"弹出框选择字体
-set guifont=Sauce_Code_Powerline:h12:cANSI
+""set guifont=*	"弹出框选择字体
+if g:os == "windows"
+	set guifont=Sauce_Code_Powerline:h12:cANSI
+elseif g:os == "linux"
+	set guifont=Sauce\ Code\ Powerline\ Regular\ 12
+endif
 set laststatus=2
 set t_Co=256
-let g:Powerline_symbols = "fancy"
+""let g:Powerline_symbols = "fancy"
 ""Plan A (seti + wombat)
 "color seti
 "let g:airline_theme = "wombat"
@@ -512,7 +532,5 @@ set fdm=manual
 "let g:winManagerWidth = 30
 "在进入vim时自动打开/关闭winmanager___Auto___Open__
 "let g:AutoOpenWinManager = 1
-
-""新的功能请在最后添加
 
 
