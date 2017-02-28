@@ -447,6 +447,7 @@ Bundle 'tpope/vim-fugitive'
 "查看提交以树行结构展示"
 Bundle 'sjl/gundo.vim'
 ""<<<<<<<<<<sjl/gundo.vim
+Bundle 'flazz/vim-colorschemes'
 ""{	括号显示增强
 Bundle 'kien/rainbow_parentheses.vim'
 " 不加入这行, 防止黑色括号出现, 很难识别
@@ -532,5 +533,4 @@ set fdm=manual
 "let g:winManagerWidth = 30
 "在进入vim时自动打开/关闭winmanager___Auto___Open__
 "let g:AutoOpenWinManager = 1
-
 
