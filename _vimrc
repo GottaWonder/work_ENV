@@ -108,19 +108,19 @@
 	""##Normal Mode {
 		if g:os == "windows"
 			"执行更新_vimrc
-			nmap <Leader>uvim :source $VIM/_vimrc<CR>
+			nnoremap <Leader>uvim :source $VIM/_vimrc<CR>
 			"新窗编辑_vimrc
-			nmap <Leader>ovim :vs! $VIM/_vimrc<CR>
-			nmap <Leader>evim :e! $VIM/_vimrc<CR>
+			nnoremap <Leader>ovim :vs! $VIM/_vimrc<CR>
+			nnoremap <Leader>evim :e! $VIM/_vimrc<CR>
 			"打开host文件
-			nmap <Leader>ohost :vs! C:\Windows\System32\drivers\etc\hosts<CR>
-			nmap <Leader>ehost :e! C:\Windows\System32\drivers\etc\hosts<CR>
+			nnoremap <Leader>ohost :vs! C:\Windows\System32\drivers\etc\hosts<CR>
+			nnoremap <Leader>ehost :e! C:\Windows\System32\drivers\etc\hosts<CR>
 		elseif g:os == "linux"
-			nmap <Leader>uvim :source $VIM/vimrc<CR>
-			nmap <Leader>ovim :vs! $VIM/vimrc<CR>
-			nmap <Leader>evim :e! $VIM/vimrc<CR>
-			nmap <Leader>ohost :vs! /etc/hosts<CR>
-			nmap <Leader>ehost :e! /etc/hosts<CR>
+			nnoremap <Leader>uvim :source $VIM/vimrc<CR>
+			nnoremap <Leader>ovim :vs! $VIM/vimrc<CR>
+			nnoremap <Leader>evim :e! $VIM/vimrc<CR>
+			nnoremap <Leader>ohost :vs! /etc/hosts<CR>
+			nnoremap <Leader>ehost :e! /etc/hosts<CR>
 			endif
 	""} ##Normal Mode
 """"} Mapper Setting
@@ -131,7 +131,7 @@
 	set autochdir
 	""按下F8重新生成tag文件，并更新taglist
 	"map <F8> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
-	""imap <F8> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
+	""inoremap <F8> <ESC>:!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR> :TlistUpdate<CR>
 """"} tags
 
 """"========== VIM Plugins Block start ========== {
@@ -292,7 +292,7 @@ let Tlist_Use_Right_Window = 0	"在左/右侧窗口中显示taglist窗口(默认
 "Tlist_WinHeight和Tlist_WinWidth可以设置taglist窗口的高度和宽度。
 "Tlist_Use_Horiz_Window为１设置taglist窗口横向显示；
 "Tlist映射
-nmap <Leader>tl :TlistToggle<CR>
+nnoremap <Leader>tl :TlistToggle<CR>
 "">>>>>>>>>>taglist
 ""BufExplorer
 let g:bufExplorerDefaultHelp=0    " Do not show default help
@@ -329,7 +329,7 @@ let showmarks_hlline_upper = 1
 ""<<<<<<<<<<showmarks7
 "">>>>>>>>>>markbrowser
 Bundle 'aur-archive/vim-markbrowser'
-nmap <silent> <Leader>mb :MarksBrowser<CR>
+nnoremap <silent> <Leader>mb :MarksBrowser<CR>
 ""<<<<<<<<<<markbrowser
 "">>>>>>>>>>evil_nerd_commenter
 "Bundle 'redguardtoo/evil-nerd-commenter'
@@ -499,13 +499,13 @@ Bundle 'tpope/vim-surround'
 "	inoremap '' ''<LEFT>
 "	inoremap "" ""<LEFT>
 " Ctrl + H		光标左移一格
-imap <C-H> <Left>
+inoremap <C-H> <Left>
 " Ctrl + L		光标右移一格
-imap <C-L> <Right>
+inoremap <C-L> <Right>
 " Ctrl + J		光标至下一行首
-imap <C-J> <ESC><Down>I
+inoremap <C-J> <ESC><Down>I
 " Ctrl + K		光标至上一行尾
-imap <C-K> <ESC><Up>A
+inoremap <C-K> <ESC><Up>A
 "搜索完后按esc去掉高亮
 nnoremap <ESC> :nohl<cr>
 "Fast reloading of the .vimrc
@@ -514,7 +514,7 @@ nnoremap <ESC> :nohl<cr>
 "map <silent> <leader>ee :e D:\Program Files (x86)\Vim\_vimrc
 "When .vimrc is edited, reload it
 "autocmd! bufwritepost .vimrc source ~/.vimrc
-nmap mm :%s/\r//g<cr>
+nnoremap mm :%s/\r//g<cr>
 """"""""""""""""""""""""""""""
 set fdm=manual
 """"""""""""""""""""""""""""""搁置
@@ -528,9 +528,10 @@ set fdm=manual
 "let g:winManagerWindowLayout = 'FileExplorer,BufExplorer|TagList'
 "let g:winManagerWindowLayout = 'FileExplorer|TagList'
 "WinManager映射
-"nmap ,wm :WMToggle<CR>
+"nnoremap ,wm :WMToggle<CR>
 "设置winmanager的宽度，默认为25
 "let g:winManagerWidth = 30
 "在进入vim时自动打开/关闭winmanager___Auto___Open__
 "let g:AutoOpenWinManager = 1
+
 
