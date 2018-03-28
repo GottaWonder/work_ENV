@@ -264,7 +264,7 @@ set guifont=Sauce_Code_Powerline:h12:cANSI
 elseif g:os == "linux"
 set guifont=Sauce\ Code\ Powerline\ Regular\ 12
 elseif g:os == "mac"
-set guifont=source\ Code\ Pro\ for\ Powerline:h12
+set guifont=source\ Code\ Pro\ for\ Powerline:h13
 endif
 set laststatus=2
 set t_Co=256
@@ -544,6 +544,29 @@ map <Leader><leader>. <Plug>(easymotion-repeat)
 ""{	快速给词加环绕符号
 Bundle 'tpope/vim-surround'
 ""快速给词加环绕符号	}
+""{ 记录最近打开的文件
+Bundle 'yegappan/mru'
+"http://www.vim.org/scripts/script.php?script_id=521
+"https://github.com/yegappan/mru
+"记录历史文件的位置
+let MRU_File=$VIM.'\Data\mru_files.txt' 
+"记录的条数
+let MRU_Max_Entries=50  
+"分割窗口的大小
+let MRU_Window_Height=10 
+"选择文件后打开此窗口自动关闭
+let MRU_Auto_Close=1 
+"简化：,h 打开MRU
+map <silent> <leader>h :MRU<CR>
+""记录最近打开的文件	}
+""{ vim-json 高亮插件
+Bundle 'elzr/vim-json'
+"https://github.com/elzr/vim-json
+"vim-json 高亮插件}
+""{UML
+Bundle 'aklt/plantuml-syntax'
+"https://github.com/aklt/plantuml-syntax
+""UML}
 """"""""""""""""""""""""""""""按键映射
 " 插入匹配括号
 "	inoremap () ()<LEFT>
@@ -587,3 +610,4 @@ set fdm=manual
 "let g:winManagerWidth = 30
 "在进入vim时自动打开/关闭winmanager___Auto___Open__
 "let g:AutoOpenWinManager = 1
+
